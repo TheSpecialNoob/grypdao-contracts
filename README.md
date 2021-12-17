@@ -8,6 +8,7 @@ Euphoria smart contracts
 - [BondDepository (BUSD)](https://explorer.harmony.one/address/0x5fa3eC803Ed6EeE64A52C101F4FA96dd1B093ac7?activeTab=7) - 0x5fa3eC803Ed6EeE64A52C101F4FA96dd1B093ac7
 - [BondDepository (USDC)](https://explorer.harmony.one/address/0x202c598E93F69dbe3a5e5706DfB85bdc598bb16F?activeTab=7) - 0x202c598E93F69dbe3a5e5706DfB85bdc598bb16F
 - [BondDepository (WAGMI/ONE)](https://explorer.harmony.one/address/0x88eD43604976a65F88EE5be38FC743F7b955AB1e?activeTab=7) - 0x88eD43604976a65F88EE5be38FC743F7b955AB1e
+- [BondDepository (ONE)](https://explorer.harmony.one/address/0x1153b233076ee226A1b43f56a9eD55293a6833ee?activeTab=7) - 0x1153b233076ee226A1b43f56a9eD55293a6833ee
 - [BondingCalculator](https://explorer.harmony.one/address/0x6aA8444F72c7a3C5c23068A1598481e84dc722e3?activeTab=7) - 0x6aA8444F72c7a3C5c23068A1598481e84dc722e3
 - [Distributor](https://explorer.harmony.one/address/0x159e0d93D387e18329A4dACd39dBEcC587F78589?activeTab=7) - 0x159e0d93D387e18329A4dACd39dBEcC587F78589
 - [RedeemHelper](https://explorer.harmony.one/address/0x1e212250A8e19aA2E16e291425a2Cb9ce902af33?activeTab=7) - 0x1e212250A8e19aA2E16e291425a2Cb9ce902af33
