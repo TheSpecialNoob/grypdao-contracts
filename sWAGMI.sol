@@ -948,9 +948,9 @@ contract Policy is IPolicy {
     }
 }
 
-// File contracts/sWAGMI.sol
+// File contracts/sGRYP.sol
 
-contract sWAGMI is ERC20Permit, Policy {
+contract sGRYP is ERC20Permit, Policy {
     using CustomSafeMath for uint256;
 
     modifier onlyStakingContract() {
@@ -993,7 +993,7 @@ contract sWAGMI is ERC20Permit, Policy {
 
     mapping(address => mapping(address => uint256)) private _allowedValue;
 
-    constructor() ERC20('Staked WAGMI', 'sWAGMI', 9) ERC20Permit() {
+    constructor() ERC20('Staked GRYP', 'sGRYP', 9) ERC20Permit() {
         initializer = msg.sender;
         _totalSupply = INITIAL_FRAGMENTS_SUPPLY;
         _gonsPerFragment = TOTAL_GONS.div(_totalSupply);
@@ -1019,7 +1019,7 @@ contract sWAGMI is ERC20Permit, Policy {
     }
 
     /**
-        @notice increases sWAGMI supply to increase staking balances relative to profit_
+        @notice increases sGRYP supply to increase staking balances relative to profit_
         @param profit_ uint256
         @return uint256
      */
@@ -1094,7 +1094,7 @@ contract sWAGMI is ERC20Permit, Policy {
         return gons.div(_gonsPerFragment);
     }
 
-    // Staking contract holds excess sWAGMI
+    // Staking contract holds excess sGRYP
     function circulatingSupply() public view returns (uint256) {
         return _totalSupply.sub(balanceOf(stakingContract));
     }
