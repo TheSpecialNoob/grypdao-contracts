@@ -546,11 +546,11 @@ contract BondingCalculator is IBondingCalculator {
     using CustomSafeMath for uint256;
     using CustomSafeMath for uint112;
 
-    address public immutable WAGMI;
+    address public immutable GRYP;
 
-    constructor(address _WAGMI) {
-        require(_WAGMI != address(0));
-        WAGMI = _WAGMI;
+    constructor(address _GRYP) {
+        require(_GRYP != address(0));
+        GRYP = _GRYP;
     }
 
     function getKValue(address _pair) public view returns (uint256 k_) {
@@ -577,11 +577,11 @@ contract BondingCalculator is IBondingCalculator {
         (uint256 reserve0, uint256 reserve1, ) = IUniswapV2Pair(_pair).getReserves();
 
         uint256 reserve;
-        if (IUniswapV2Pair(_pair).token0() == WAGMI) {
+        if (IUniswapV2Pair(_pair).token0() == GRYP) {
             reserve = reserve1;
         } else {
             reserve = reserve0;
         }
-        return reserve.mul(2 * (10**IERC20(WAGMI).decimals())).div(getTotalValue(_pair));
+        return reserve.mul(2 * (10**IERC20(GRYP).decimals())).div(getTotalValue(_pair));
     }
 }
