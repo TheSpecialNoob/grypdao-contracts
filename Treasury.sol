@@ -741,9 +741,9 @@ interface IERC20Mintable {
     function mint(address account_, uint256 ammount_) external;
 }
 
-// File contracts/interfaces/IWAGMIERC20.sol
+// File contracts/interfaces/IGRYPERC20.sol
 
-interface IWAGMIERC20 {
+interface IGRYPERC20 {
     function burnFrom(address account_, uint256 amount_) external;
 }
 
@@ -834,10 +834,10 @@ contract Treasury is Policy {
         LIQUIDITYMANAGER,
         DEBTOR,
         REWARDMANAGER,
-        SWAGMI
+        SGRYP
     }
 
-    address public immutable WAGMI;
+    address public immutable GRYP;
     uint32 public immutable secondsNeededForQueue;
 
     address[] public reserveTokens; // Push only, beware false-positives.
@@ -879,25 +879,25 @@ contract Treasury is Policy {
     mapping(address => bool) public isRewardManager;
     mapping(address => uint32) public rewardManagerQueue; // Delays changes to mapping.
 
-    address public sWAGMI;
-    uint256 public sWAGMIQueue; // Delays change to sOHM address
+    address public sGRYP;
+    uint256 public sGRYPQueue; // Delays change to sOHM address
 
     uint256 public totalReserves; // Risk-free value of all assets
     uint256 public totalDebt;
 
     constructor(
-        address _WAGMI,
+        address _GRYP,
         address _DAI,
         uint32 _secondsNeededForQueue
     ) {
-        require(_WAGMI != address(0));
-        WAGMI = _WAGMI;
+        require(_GRYP != address(0));
+        GRYP = _GRYP;
 
         isReserveToken[_DAI] = true;
         reserveTokens.push(_DAI);
 
-        /*isLiquidityToken[_WAGMIDAI] = true;
-        liquidityTokens.push(_WAGMIDAI);*/
+        /*isLiquidityToken[_GRYPDAI] = true;
+        liquidityTokens.push(_GRYPDAI);*/
 
         secondsNeededForQueue = _secondsNeededForQueue;
     }
@@ -926,7 +926,7 @@ contract Treasury is Policy {
         uint256 value = valueOfToken(_token, _amount);
         // mint OHM needed and store amount of rewards for distribution
         send_ = value.sub(_profit);
-        IERC20Mintable(WAGMI).mint(msg.sender, send_);
+        IERC20Mintable(GRYP).mint(msg.sender, send_);
 
         totalReserves = totalReserves.add(value);
         emit ReservesUpdated(totalReserves);
@@ -944,7 +944,7 @@ contract Treasury is Policy {
         require(isReserveSpender[msg.sender] == true, 'Not approved');
 
         uint256 value = valueOfToken(_token, _amount);
-        IWAGMIERC20(WAGMI).burnFrom(msg.sender, value);
+        IGRYPERC20(GRYP).burnFrom(msg.sender, value);
 
         totalReserves = totalReserves.sub(value);
         emit ReservesUpdated(totalReserves);
@@ -965,7 +965,7 @@ contract Treasury is Policy {
 
         uint256 value = valueOfToken(_token, _amount);
 
-        uint256 maximumDebt = IERC20(sWAGMI).balanceOf(msg.sender); // Can only borrow against sOHM held
+        uint256 maximumDebt = IERC20(sGRYP).balanceOf(msg.sender); // Can only borrow against sOHM held
         uint256 availableDebt = maximumDebt.sub(debtorBalance[msg.sender]);
         require(value <= availableDebt, 'Exceeds debt limit');
 
@@ -1005,15 +1005,15 @@ contract Treasury is Policy {
         @notice allow approved address to repay borrowed reserves with OHM
         @param _amount uint
      */
-    function repayDebtWithWAGMI(uint256 _amount) external {
+    function repayDebtWithGRYP(uint256 _amount) external {
         require(isDebtor[msg.sender], 'Not approved');
 
-        IWAGMIERC20(WAGMI).burnFrom(msg.sender, _amount);
+        IGRYPERC20(GRYP).burnFrom(msg.sender, _amount);
 
         debtorBalance[msg.sender] = debtorBalance[msg.sender].sub(_amount);
         totalDebt = totalDebt.sub(_amount);
 
-        emit RepayDebt(msg.sender, WAGMI, _amount, _amount);
+        emit RepayDebt(msg.sender, GRYP, _amount, _amount);
     }
 
     /**
@@ -1046,7 +1046,7 @@ contract Treasury is Policy {
         require(isRewardManager[msg.sender], 'Not approved');
         require(_amount <= excessReserves(), 'Insufficient reserves');
 
-        IERC20Mintable(WAGMI).mint(_recipient, _amount);
+        IERC20Mintable(GRYP).mint(_recipient, _amount);
 
         emit RewardsMinted(msg.sender, _recipient, _amount);
     }
@@ -1056,7 +1056,7 @@ contract Treasury is Policy {
         @return uint
      */
     function excessReserves() public view returns (uint256) {
-        return totalReserves.sub(IERC20(WAGMI).totalSupply().sub(totalDebt));
+        return totalReserves.sub(IERC20(GRYP).totalSupply().sub(totalDebt));
     }
 
     /**
@@ -1087,7 +1087,7 @@ contract Treasury is Policy {
     function valueOfToken(address _token, uint256 _amount) public view returns (uint256 value_) {
         if (isReserveToken[_token]) {
             // convert amount to match OHM decimals
-            value_ = _amount.mul(10**IERC20(WAGMI).decimals()).div(10**IERC20(_token).decimals());
+            value_ = _amount.mul(10**IERC20(GRYP).decimals()).div(10**IERC20(_token).decimals());
         } else if (isLiquidityToken[_token]) {
             value_ = IBondCalculator(bondCalculator[_token]).valuation(_token, _amount);
         }
@@ -1128,9 +1128,9 @@ contract Treasury is Policy {
         } else if (_managing == MANAGING.REWARDMANAGER) {
             // 8
             rewardManagerQueue[_address] = uint32(block.timestamp).add32(secondsNeededForQueue);
-        } else if (_managing == MANAGING.SWAGMI) {
+        } else if (_managing == MANAGING.SGRYP) {
             // 9
-            sWAGMIQueue = uint32(block.timestamp).add32(secondsNeededForQueue);
+            sGRYPQueue = uint32(block.timestamp).add32(secondsNeededForQueue);
         } else return false;
 
         emit ChangeQueued(_managing, _address);
@@ -1244,10 +1244,10 @@ contract Treasury is Policy {
             }
             result = !isRewardManager[_address];
             isRewardManager[_address] = result;
-        } else if (_managing == MANAGING.SWAGMI) {
+        } else if (_managing == MANAGING.SGRYP) {
             // 9
-            sWAGMIQueue = 0;
-            sWAGMI = _address;
+            sGRYPQueue = 0;
+            sGRYP = _address;
             result = true;
         } else return false;
 
