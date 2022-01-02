@@ -1011,12 +1011,12 @@ abstract contract ERC20Permit is ERC20, IERC2612Permit {
     }
 }
 
-// File contracts/WAGMI.sol
+// File contracts/GRYP.sol
 
-contract WAGMI is ERC20Permit, VaultOwned {
+contract GRYP is ERC20Permit, VaultOwned {
     using CustomSafeMath for uint256;
 
-    constructor() ERC20('Euphoria', 'WAGMI', 9) {}
+    constructor() ERC20('Euphoria', 'GRYP', 9) {}
 
     function mint(address account_, uint256 amount_) external onlyVault {
         _mint(account_, amount_);
