@@ -34,17 +34,17 @@ interface IERC20 {
 
 contract StakingWarmup {
     address public immutable staking;
-    address public immutable sWAGMI;
+    address public immutable sGRYP;
 
-    constructor(address _staking, address _sWAGMI) {
+    constructor(address _staking, address _sGRYP) {
         require(_staking != address(0));
         staking = _staking;
-        require(_sWAGMI != address(0));
-        sWAGMI = _sWAGMI;
+        require(_sGRYP != address(0));
+        sGRYP = _sGRYP;
     }
 
     function retrieve(address _staker, uint256 _amount) external {
         require(msg.sender == staking);
-        IERC20(sWAGMI).transfer(_staker, _amount);
+        IERC20(sGRYP).transfer(_staker, _amount);
     }
 }
