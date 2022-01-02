@@ -15,8 +15,8 @@ GrypDAO smart contracts
 - ✅[Staking](https://explorer.harmony.one/address/0x95066025af40F7f7832f61422802cD1e13C23753?activeTab=7) - 0x95066025af40F7f7832f61422802cD1e13C23753
 - ✅[StakingHelper](https://explorer.harmony.one/address/0xcb8a867f728db56bc71c5a12e643212b8102b7b5) - 0xcb8A867F728dB56bc71C5a12E643212b8102B7B5
 - ✅[StakingWarmup](https://explorer.harmony.one/address/0x4633ffd9391005e408dbd192dc566f11b1b72e83) - 0x4633ffd9391005E408DbD192Dc566f11b1B72E83
-- ❌[Timelock](https://explorer.harmony.one/address/0x32a017ebdb296dad09623b49142d3045e842c974?activeTab=7) - 0x32a017ebdb296dad09623b49142d3045e842c974
-- ❌[Treasury](https://explorer.harmony.one/address/0x1A9Be7D6f94D3Ba8c37568E08D8D8780AAD128E6?activeTab=7) - 0x1A9Be7D6f94D3Ba8c37568E08D8D8780AAD128E6
+- 🟠[Timelock](https://explorer.harmony.one/address/0x32a017ebdb296dad09623b49142d3045e842c974?activeTab=7) - 0x32a017ebdb296dad09623b49142d3045e842c974
+- 🟠[Treasury](https://explorer.harmony.one/address/0x1A9Be7D6f94D3Ba8c37568E08D8D8780AAD128E6?activeTab=7) - 0x1A9Be7D6f94D3Ba8c37568E08D8D8780AAD128E6
 - ✅[GRYP](https://explorer.harmony.one/address/0xcdd052ecfc189503603b4c750e9c536a1e42e1c6) - 0xCdd052EcFC189503603b4c750e9c536A1e42E1C6
 - ✅[sGRYP](https://explorer.harmony.one/address/0xd5dbbba0224d910d445bc7c6d3a55bf2ea801ce7) - 0xd5DbbBa0224D910d445bC7C6d3A55bf2EA801Ce7
 - ✅[wsGRYP](https://explorer.harmony.one/address/0x47d57c80a3b67fe2f7d4613a3228e4e116c4f22b) - 0x47d57C80a3B67FE2f7D4613A3228e4e116C4F22B
