@@ -1,4 +1,4 @@
-# euphoria-contracts
+# GrypDAO-contracts
 Euphoria smart contracts
 
 - [BondDepository (DAI)](https://explorer.harmony.one/address/0xa2473b5B85a9EBEc65679d279979222f28cd9467?activeTab=7) - 0xa2473b5B85a9EBEc65679d279979222f28cd9467
