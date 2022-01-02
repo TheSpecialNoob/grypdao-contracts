@@ -255,9 +255,9 @@ interface IERC20 {
     event Approval(address indexed owner, address indexed spender, uint256 value);
 }
 
-// File contracts/interfaces/ISWAGMI.sol
+// File contracts/interfaces/ISGRYP.sol
 
-interface ISWAGMI {
+interface ISGRYP {
     function rebase(uint256 ohmProfit_, uint256 epoch_) external returns (uint256);
 
     function circulatingSupply() external view returns (uint256);
@@ -271,9 +271,9 @@ interface ISWAGMI {
     function index() external view returns (uint256);
 }
 
-// File contracts/interfaces/IWSWAGMI.sol
+// File contracts/interfaces/IWSGRYP.sol
 
-interface IWSWAGMI {
+interface IWSGRYP {
     function wrap(uint256 _amount) external returns (uint256);
 
     function unwrap(uint256 _amount) external returns (uint256);
@@ -282,14 +282,14 @@ interface IWSWAGMI {
 
     function totalSupply() external view returns (uint256);
 
-    function wsWAGMITosWAGMI(uint256 _amount) external view returns (uint256);
+    function wsGRYPTosGRYP(uint256 _amount) external view returns (uint256);
 
-    function sWAGMITowsWAGMI(uint256 _amount) external view returns (uint256);
+    function sGRYPTowsGRYP(uint256 _amount) external view returns (uint256);
 }
 
-// File contracts/Governance/WAGMIPower.sol
+// File contracts/Governance/GRYPPower.sol
 
-contract WAGMIPower {
+contract GRYPPower {
     using SafeMath for uint256;
 
     string private _name;
@@ -297,15 +297,15 @@ contract WAGMIPower {
     uint8 private _decimals;
 
     IERC20 private _token;
-    ISWAGMI private _stakedToken;
-    IWSWAGMI private _wrappedStakedToken;
+    ISGRYP private _stakedToken;
+    IWSGRYP private _wrappedStakedToken;
 
     constructor(
         string memory name_,
         string memory symbol_,
         IERC20 token_,
-        ISWAGMI stakedToken_,
-        IWSWAGMI wrappedStakedToken_
+        ISGRYP stakedToken_,
+        IWSGRYP wrappedStakedToken_
     ) {
         _name = name_;
         _symbol = symbol_;
@@ -351,7 +351,7 @@ contract WAGMIPower {
         uint256 tokenTotalSupply = _token.totalSupply();
         uint256 stakedTokenTotalSupply = _stakedToken.circulatingSupply();
         uint256 wrappedStakedTokenTotalSupply = _wrappedStakedToken.totalSupply();
-        uint256 convertedWrappedStakedTokenTotalSupply = _wrappedStakedToken.wsWAGMITosWAGMI(
+        uint256 convertedWrappedStakedTokenTotalSupply = _wrappedStakedToken.wsGRYPTosGRYP(
             wrappedStakedTokenTotalSupply
         );
 
@@ -366,7 +366,7 @@ contract WAGMIPower {
         uint256 tokenBalanceOf = _token.balanceOf(owner);
         uint256 stakedTokenBalanceOf = _stakedToken.balanceOf(owner);
         uint256 wrappedStakedTokenBalanceOf = _wrappedStakedToken.balanceOf(owner);
-        uint256 wrappedRecalculatedAsStaked = _wrappedStakedToken.wsWAGMITosWAGMI(wrappedStakedTokenBalanceOf);
+        uint256 wrappedRecalculatedAsStaked = _wrappedStakedToken.wsGRYPTosGRYP(wrappedStakedTokenBalanceOf);
 
         uint256 votingPower = tokenBalanceOf.add(stakedTokenBalanceOf).add(wrappedRecalculatedAsStaked);
 
