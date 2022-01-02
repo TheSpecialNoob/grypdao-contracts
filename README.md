@@ -1,5 +1,5 @@
-# GrypDAO-contracts
-Euphoria smart contracts
+# Gryp-contracts
+GrypDAO smart contracts
 
 - [BondDepository (DAI)](https://explorer.harmony.one/address/0xa2473b5B85a9EBEc65679d279979222f28cd9467?activeTab=7) - 0xa2473b5B85a9EBEc65679d279979222f28cd9467
 - [BondDepository (WAGMI/DAI)](https://explorer.harmony.one/address/0xECDB54197b7A7F62a8fa3A04850347C4C99Ab7e1?activeTab=7) - 0xECDB54197b7A7F62a8fa3A04850347C4C99Ab7e1
