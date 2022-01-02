@@ -20,4 +20,4 @@ GrypDAO smart contracts
 - ✅[GRYP](https://explorer.harmony.one/address/0xcdd052ecfc189503603b4c750e9c536a1e42e1c6) - 0xCdd052EcFC189503603b4c750e9c536A1e42E1C6
 - ✅[sGRYP](https://explorer.harmony.one/address/0xd5dbbba0224d910d445bc7c6d3a55bf2ea801ce7) - 0xd5DbbBa0224D910d445bC7C6d3A55bf2EA801Ce7
 - ✅[wsGRYP](https://explorer.harmony.one/address/0x47d57c80a3b67fe2f7d4613a3228e4e116c4f22b) - 0x47d57C80a3B67FE2f7D4613A3228e4e116C4F22B
-- ❌[WAGMIPower](https://explorer.harmony.one/address/0x4169B47a2c4E67c3Aff520dd3DBb5f777087df68?activeTab=7) - 0x4169B47a2c4E67c3Aff520dd3DBb5f777087df68
+- ✅[GRYPPower](https://explorer.harmony.one/address/0xade46c7fabc0c1790dace65f3dab1d3665747f0e) - 0xADe46c7fAbc0C1790DACe65f3Dab1D3665747F0E
