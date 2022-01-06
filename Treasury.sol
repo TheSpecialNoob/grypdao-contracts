@@ -880,7 +880,7 @@ contract Treasury is Policy {
     mapping(address => uint32) public rewardManagerQueue; // Delays changes to mapping.
 
     address public sGRYP;
-    uint256 public sGRYPQueue; // Delays change to sOHM address
+    uint256 public sGRYPQueue; // Delays change to sGRYP address
 
     uint256 public totalReserves; // Risk-free value of all assets
     uint256 public totalDebt;
@@ -903,7 +903,7 @@ contract Treasury is Policy {
     }
 
     /**
-        @notice allow approved address to deposit an asset for OHM
+        @notice allow approved address to deposit an asset for GRYP
         @param _amount uint
         @param _token address
         @param _profit uint
@@ -924,7 +924,7 @@ contract Treasury is Policy {
         }
 
         uint256 value = valueOfToken(_token, _amount);
-        // mint OHM needed and store amount of rewards for distribution
+        // mint GRYP needed and store amount of rewards for distribution
         send_ = value.sub(_profit);
         IERC20Mintable(GRYP).mint(msg.sender, send_);
 
@@ -935,7 +935,7 @@ contract Treasury is Policy {
     }
 
     /**
-        @notice allow approved address to burn OHM for reserves
+        @notice allow approved address to burn GRYP for reserves
         @param _amount uint
         @param _token address
      */
@@ -965,7 +965,7 @@ contract Treasury is Policy {
 
         uint256 value = valueOfToken(_token, _amount);
 
-        uint256 maximumDebt = IERC20(sGRYP).balanceOf(msg.sender); // Can only borrow against sOHM held
+        uint256 maximumDebt = IERC20(sGRYP).balanceOf(msg.sender); // Can only borrow against sGRYP held
         uint256 availableDebt = maximumDebt.sub(debtorBalance[msg.sender]);
         require(value <= availableDebt, 'Exceeds debt limit');
 
@@ -1002,7 +1002,7 @@ contract Treasury is Policy {
     }
 
     /**
-        @notice allow approved address to repay borrowed reserves with OHM
+        @notice allow approved address to repay borrowed reserves with GRYP
         @param _amount uint
      */
     function repayDebtWithGRYP(uint256 _amount) external {
@@ -1079,14 +1079,14 @@ contract Treasury is Policy {
     }
 
     /**
-        @notice returns OHM valuation of asset
+        @notice returns GRYP valuation of asset
         @param _token address
         @param _amount uint
         @return value_ uint
      */
     function valueOfToken(address _token, uint256 _amount) public view returns (uint256 value_) {
         if (isReserveToken[_token]) {
-            // convert amount to match OHM decimals
+            // convert amount to match GRYP decimals
             value_ = _amount.mul(10**IERC20(GRYP).decimals()).div(10**IERC20(_token).decimals());
         } else if (isLiquidityToken[_token]) {
             value_ = IBondCalculator(bondCalculator[_token]).valuation(_token, _amount);
