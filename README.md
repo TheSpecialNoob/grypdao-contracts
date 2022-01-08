@@ -1,8 +1,8 @@
 # Gryp-contracts
 GrypDAO smart contracts
 
-- ❌[BondDepository (DAI)](https://explorer.harmony.one/address/0xa2473b5B85a9EBEc65679d279979222f28cd9467?activeTab=7) - 0xa2473b5B85a9EBEc65679d279979222f28cd9467
-- ✅[BondDepository (GRYP/DAI)](https://explorer.harmony.one/address/0xb93cf0a99455b4e2b34e8be7fc16f3f39eb792f9) - 0xB93cF0a99455b4E2B34E8be7Fc16F3F39EB792F9
+- ✅[BondDepository (DAI)](https://explorer.harmony.one/address/0xce0a0415358eda629ba8193900481dab7a33cb1f?activeTab=7) - 0xce0A0415358EdA629BA8193900481DAB7A33cB1F
+- ❌[BondDepository (GRYP/DAI)](https://explorer.harmony.one/address/0xb93cf0a99455b4e2b34e8be7fc16f3f39eb792f9) - 0xB93cF0a99455b4E2B34E8be7Fc16F3F39EB792F9
 - ❌[BondDepository (UST)](https://explorer.harmony.one/address/0xF43911c859532E38c969ee1b59Eeca3De5630Fe3?activeTab=7) - 0xF43911c859532E38c969ee1b59Eeca3De5630Fe3
 - ❌[BondDepository (WAGMI/UST)](https://explorer.harmony.one/address/0x17ADf3fC3319AfC79BF7D7dD49c34E59A30D410f?activeTab=7) - 0x17ADf3fC3319AfC79BF7D7dD49c34E59A30D410f
 - ❌[BondDepository (BUSD)](https://explorer.harmony.one/address/0x5fa3eC803Ed6EeE64A52C101F4FA96dd1B093ac7?activeTab=7) - 0x5fa3eC803Ed6EeE64A52C101F4FA96dd1B093ac7
